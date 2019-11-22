@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AdventureWorksOData.Database;
+using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
+using Microsoft.AspNet.OData.Query;
 
 namespace AdventureWorksOData.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PeopleController : ControllerBase
+    [ODataRoutePrefix("Person")]
+    public class PeopleController : ODataController
     {
         private readonly AdventureWorksContext _context;
 
@@ -20,120 +22,18 @@ namespace AdventureWorksOData.Controllers
             _context = context;
         }
 
-        // GET: api/People
-        [HttpGet]
-        public IEnumerable<Person> GetPerson()
+        [EnableQuery()]
+        [ODataRoute]
+        public IActionResult Get()
         {
-            return _context.Person.Take(100);
+            return Ok(_context.Person.AsQueryable());
         }
 
-        // GET: api/People/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPerson([FromRoute] int id)
+        [ODataRoute("({key})")]
+        [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
+        public IActionResult Get([FromODataUri]int key)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var person = await _context.Person.FindAsync(id);
-
-            if (person == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(person);
-        }
-
-        // PUT: api/People/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson([FromRoute] int id, [FromBody] Person person)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != person.BusinessEntityId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(person).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/People
-        [HttpPost]
-        public async Task<IActionResult> PostPerson([FromBody] Person person)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Person.Add(person);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (PersonExists(person.BusinessEntityId))
-                {
-                    return new StatusCodeResult(StatusCodes.Status409Conflict);
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetPerson", new { id = person.BusinessEntityId }, person);
-        }
-
-        // DELETE: api/People/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var person = await _context.Person.FindAsync(id);
-            if (person == null)
-            {
-                return NotFound();
-            }
-
-            _context.Person.Remove(person);
-            await _context.SaveChangesAsync();
-
-            return Ok(person);
-        }
-
-        private bool PersonExists(int id)
-        {
-            return _context.Person.Any(e => e.BusinessEntityId == id);
-        }
+            return Ok(_context.Person.Find(key));
+        }   
     }
 }

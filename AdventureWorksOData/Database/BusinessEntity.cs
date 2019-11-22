@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorksOData.Database
 {
@@ -11,6 +12,7 @@ namespace AdventureWorksOData.Database
             BusinessEntityContact = new HashSet<BusinessEntityContact>();
         }
 
+        [Key]
         public int BusinessEntityId { get; set; }
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorksOData.Database
 {
@@ -12,6 +13,7 @@ namespace AdventureWorksOData.Database
             StateProvince = new HashSet<StateProvince>();
         }
 
+        [Key]
         public string CountryRegionCode { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
