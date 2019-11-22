@@ -35,7 +35,6 @@ namespace AdventureWorksOData
             services.AddMvc(builder => builder.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddOData();
-            // services.AddODataQueryFilter();
 
             services.AddMvcCore(options =>
             {
@@ -74,8 +73,11 @@ namespace AdventureWorksOData
 
             app.UseMvc(builder =>
             {
-                builder.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices));                
+                builder.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices));
                 builder.EnableDependencyInjection();
+
+                // Global OData options
+                builder.Filter().Count().Expand().OrderBy().Select();
             });
         }
 
@@ -88,120 +90,19 @@ namespace AdventureWorksOData
 
         private static void ConfigureEntities(ODataModelBuilder builder)
         {
-            builder.EntitySet<Address>("Address")
-                            .EntityType
-                            .Filter()
-                            .Count()
-                            .Expand()
-                            .OrderBy()
-                            .Page()
-                            .Select();
-
-            builder.EntitySet<AddressType>("AddressType")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<BusinessEntity>("BusinessEntity")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-            builder.EntitySet<BusinessEntityAddress>("BusinessEntityAddress")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<BusinessEntityContact>("BusinessEntityContact")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<ContactType>("ContactType")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<CountryRegion>("CountryRegion")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<EmailAddress>("EmailAddress")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<Password>("Password")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<Person>("Person")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-            builder.EntitySet<PersonPhone>("PersonPhone")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<PhoneNumberType>("PhoneNumberType")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
-
-            builder.EntitySet<StateProvince>("StateProvince")
-                .EntityType
-                .Filter()
-                .Count()
-                .Expand()
-                .OrderBy()
-                .Page()
-                .Select();
+            builder.EntitySet<Address>("Address");
+            builder.EntitySet<AddressType>("AddressType");
+            builder.EntitySet<BusinessEntity>("BusinessEntity");
+            builder.EntitySet<BusinessEntityAddress>("BusinessEntityAddress");
+            builder.EntitySet<BusinessEntityContact>("BusinessEntityContact");
+            builder.EntitySet<ContactType>("ContactType");
+            builder.EntitySet<CountryRegion>("CountryRegion");
+            builder.EntitySet<EmailAddress>("EmailAddress");
+            builder.EntitySet<Password>("Password");
+            builder.EntitySet<Person>("Person");
+            builder.EntitySet<PersonPhone>("PersonPhone");
+            builder.EntitySet<PhoneNumberType>("PhoneNumberType");
+            builder.EntitySet<StateProvince>("StateProvince");
         }
     }
 }
