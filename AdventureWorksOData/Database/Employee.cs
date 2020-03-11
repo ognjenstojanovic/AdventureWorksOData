@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorksOData.Database
 {
@@ -13,6 +14,7 @@ namespace AdventureWorksOData.Database
             PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
         }
 
+        [Key]
         public int BusinessEntityId { get; set; }
         public string NationalIdnumber { get; set; }
         public string LoginId { get; set; }

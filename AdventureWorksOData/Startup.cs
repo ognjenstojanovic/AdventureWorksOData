@@ -32,28 +32,13 @@ namespace AdventureWorksOData
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(builder => builder.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             services.AddOData();
-
-            services.AddMvcCore(options =>
-            {
-                foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
-                {
-                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/blabla"));
-                }
-                foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
-                {
-                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/blabla"));
-                }
+            services.AddODataQueryFilter();
+            services.AddMvc();            
+            services.AddDbContext<AdventureWorksContext>(o =>
+            { 
+                o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")); 
             });
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-            });
-
-            services.AddDbContext<AdventureWorksContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,19 +49,10 @@ namespace AdventureWorksOData
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
-
             app.UseMvc(builder =>
             {
                 builder.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices));
                 builder.EnableDependencyInjection();
-
-                // Global OData options
                 builder.Filter().Count().Expand().OrderBy().Select();
             });
         }
@@ -100,6 +76,7 @@ namespace AdventureWorksOData
             builder.EntitySet<EmailAddress>("EmailAddress");
             builder.EntitySet<Password>("Password");
             builder.EntitySet<Person>("Person");
+            builder.EntitySet<Employee>("Employee");
             builder.EntitySet<PersonPhone>("PersonPhone");
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
