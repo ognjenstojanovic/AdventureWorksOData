@@ -31,11 +31,7 @@ namespace AdventureWorksOData
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddControllers(mvcOptions => mvcOptions.EnableEndpointRouting = false);
-
             services.AddOData();
-
             services.AddDbContext<AdventureWorks2019Context>(o =>
             {
                 o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
@@ -56,11 +52,11 @@ namespace AdventureWorksOData
 
             app.UseAuthorization();
 
-            app.UseMvc(builder =>
+            app.UseEndpoints(endpoints =>
             {
-                builder.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices));
-                builder.EnableDependencyInjection();
-                builder.Filter().Count().Expand().OrderBy().Select();
+                endpoints.MapControllers();
+                endpoints.Select().Filter().OrderBy().Count().MaxTop(10);
+                endpoints.MapODataRoute("odata", "odata", GetEdmModel());
             });
 
             app.UseEndpoints(endpoints =>
@@ -69,9 +65,9 @@ namespace AdventureWorksOData
             });
         }
 
-        private static IEdmModel GetEdmModel(IServiceProvider serviceProvider)
+        private static IEdmModel GetEdmModel()
         {
-            ODataModelBuilder builder = new ODataConventionModelBuilder(serviceProvider);
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
             ConfigureEntities(builder);
             return builder.GetEdmModel();
         }
