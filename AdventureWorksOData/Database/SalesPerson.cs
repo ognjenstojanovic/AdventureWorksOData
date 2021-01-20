@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class SalesPerson
     {
         public SalesPerson()
         {
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
-            SalesPersonQuotaHistory = new HashSet<SalesPersonQuotaHistory>();
-            SalesTerritoryHistory = new HashSet<SalesTerritoryHistory>();
-            Store = new HashSet<Store>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
+            SalesPersonQuotaHistories = new HashSet<SalesPersonQuotaHistory>();
+            SalesTerritoryHistories = new HashSet<SalesTerritoryHistory>();
+            Stores = new HashSet<Store>();
         }
 
         public int BusinessEntityId { get; set; }
@@ -23,11 +25,11 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Employee BusinessEntity { get; set; }
-        public SalesTerritory Territory { get; set; }
-        public ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
-        public ICollection<SalesPersonQuotaHistory> SalesPersonQuotaHistory { get; set; }
-        public ICollection<SalesTerritoryHistory> SalesTerritoryHistory { get; set; }
-        public ICollection<Store> Store { get; set; }
+        public virtual Employee BusinessEntity { get; set; }
+        public virtual SalesTerritory Territory { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
+        public virtual ICollection<SalesPersonQuotaHistory> SalesPersonQuotaHistories { get; set; }
+        public virtual ICollection<SalesTerritoryHistory> SalesTerritoryHistories { get; set; }
+        public virtual ICollection<Store> Stores { get; set; }
     }
 }

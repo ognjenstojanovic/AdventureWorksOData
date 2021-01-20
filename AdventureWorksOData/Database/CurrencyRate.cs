@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class CurrencyRate
     {
         public CurrencyRate()
         {
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
         public int CurrencyRateId { get; set; }
@@ -18,8 +20,8 @@ namespace AdventureWorksOData.Database
         public decimal EndOfDayRate { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Currency FromCurrencyCodeNavigation { get; set; }
-        public Currency ToCurrencyCodeNavigation { get; set; }
-        public ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual Currency FromCurrencyCodeNavigation { get; set; }
+        public virtual Currency ToCurrencyCodeNavigation { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

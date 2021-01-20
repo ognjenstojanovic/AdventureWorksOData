@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AdventureWorksOData.Database
 {
-    public partial class BillOfMaterials
+    public partial class BillOfMaterial
     {
+        [Key]
         public int BillOfMaterialsId { get; set; }
         public int? ProductAssemblyId { get; set; }
         public int ComponentId { get; set; }
@@ -15,8 +19,8 @@ namespace AdventureWorksOData.Database
         public decimal PerAssemblyQty { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Product Component { get; set; }
-        public Product ProductAssembly { get; set; }
-        public UnitMeasure UnitMeasureCodeNavigation { get; set; }
+        public virtual Product Component { get; set; }
+        public virtual Product ProductAssembly { get; set; }
+        public virtual UnitMeasure UnitMeasureCodeNavigation { get; set; }
     }
 }

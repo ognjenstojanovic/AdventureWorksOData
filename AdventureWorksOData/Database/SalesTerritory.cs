@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class SalesTerritory
     {
         public SalesTerritory()
         {
-            Customer = new HashSet<Customer>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
-            SalesPerson = new HashSet<SalesPerson>();
-            SalesTerritoryHistory = new HashSet<SalesTerritoryHistory>();
-            StateProvince = new HashSet<StateProvince>();
+            Customers = new HashSet<Customer>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
+            SalesPeople = new HashSet<SalesPerson>();
+            SalesTerritoryHistories = new HashSet<SalesTerritoryHistory>();
+            StateProvinces = new HashSet<StateProvince>();
         }
 
         public int TerritoryId { get; set; }
@@ -25,11 +27,11 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public CountryRegion CountryRegionCodeNavigation { get; set; }
-        public ICollection<Customer> Customer { get; set; }
-        public ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
-        public ICollection<SalesPerson> SalesPerson { get; set; }
-        public ICollection<SalesTerritoryHistory> SalesTerritoryHistory { get; set; }
-        public ICollection<StateProvince> StateProvince { get; set; }
+        public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
+        public virtual ICollection<SalesPerson> SalesPeople { get; set; }
+        public virtual ICollection<SalesTerritoryHistory> SalesTerritoryHistories { get; set; }
+        public virtual ICollection<StateProvince> StateProvinces { get; set; }
     }
 }

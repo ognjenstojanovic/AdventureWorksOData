@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ProductListPriceHistory
@@ -11,6 +13,6 @@ namespace AdventureWorksOData.Database
         public decimal ListPrice { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

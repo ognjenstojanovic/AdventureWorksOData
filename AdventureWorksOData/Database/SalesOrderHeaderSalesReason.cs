@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class SalesOrderHeaderSalesReason
@@ -9,7 +11,7 @@ namespace AdventureWorksOData.Database
         public int SalesReasonId { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public SalesOrderHeader SalesOrder { get; set; }
-        public SalesReason SalesReason { get; set; }
+        public virtual SalesOrderHeader SalesOrder { get; set; }
+        public virtual SalesReason SalesReason { get; set; }
     }
 }

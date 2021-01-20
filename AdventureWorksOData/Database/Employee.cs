@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class Employee
     {
         public Employee()
         {
-            EmployeeDepartmentHistory = new HashSet<EmployeeDepartmentHistory>();
-            EmployeePayHistory = new HashSet<EmployeePayHistory>();
-            JobCandidate = new HashSet<JobCandidate>();
-            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
+            EmployeeDepartmentHistories = new HashSet<EmployeeDepartmentHistory>();
+            EmployeePayHistories = new HashSet<EmployeePayHistory>();
+            JobCandidates = new HashSet<JobCandidate>();
+            PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
         }
 
         [Key]
@@ -31,11 +33,11 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Person BusinessEntity { get; set; }
-        public SalesPerson SalesPerson { get; set; }
-        public ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistory { get; set; }
-        public ICollection<EmployeePayHistory> EmployeePayHistory { get; set; }
-        public ICollection<JobCandidate> JobCandidate { get; set; }
-        public ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
+        public virtual Person BusinessEntity { get; set; }
+        public virtual SalesPerson SalesPerson { get; set; }
+        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
+        public virtual ICollection<EmployeePayHistory> EmployeePayHistories { get; set; }
+        public virtual ICollection<JobCandidate> JobCandidates { get; set; }
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
     }
 }

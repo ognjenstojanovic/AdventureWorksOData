@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksOData", "AdventureWorksOData\AdventureWorksOData.csproj", "{43B06EA0-0B77-4355-B775-E64B3E5C587E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksOData", "AdventureWorksOData\AdventureWorksOData.csproj", "{FA6CA5DE-B45C-4DBF-999D-BFE7188A0F77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{43B06EA0-0B77-4355-B775-E64B3E5C587E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43B06EA0-0B77-4355-B775-E64B3E5C587E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43B06EA0-0B77-4355-B775-E64B3E5C587E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43B06EA0-0B77-4355-B775-E64B3E5C587E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA6CA5DE-B45C-4DBF-999D-BFE7188A0F77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA6CA5DE-B45C-4DBF-999D-BFE7188A0F77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA6CA5DE-B45C-4DBF-999D-BFE7188A0F77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA6CA5DE-B45C-4DBF-999D-BFE7188A0F77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {02248963-4AF0-4CDB-A3DF-A3F08678FE9C}
+		SolutionGuid = {5660DAB5-3CE6-4331-83DC-9645503711B0}
 	EndGlobalSection
 EndGlobal

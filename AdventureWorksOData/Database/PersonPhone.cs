@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class PersonPhone
@@ -12,7 +14,7 @@ namespace AdventureWorksOData.Database
         public int PhoneNumberTypeId { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Person BusinessEntity { get; set; }
-        public PhoneNumberType PhoneNumberType { get; set; }
+        public virtual Person BusinessEntity { get; set; }
+        public virtual PhoneNumberType PhoneNumberType { get; set; }
     }
 }

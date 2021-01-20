@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class WorkOrder
     {
         public WorkOrder()
         {
-            WorkOrderRouting = new HashSet<WorkOrderRouting>();
+            WorkOrderRoutings = new HashSet<WorkOrderRouting>();
         }
 
         public int WorkOrderId { get; set; }
@@ -21,8 +23,8 @@ namespace AdventureWorksOData.Database
         public short? ScrapReasonId { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Product Product { get; set; }
-        public ScrapReason ScrapReason { get; set; }
-        public ICollection<WorkOrderRouting> WorkOrderRouting { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual ScrapReason ScrapReason { get; set; }
+        public virtual ICollection<WorkOrderRouting> WorkOrderRoutings { get; set; }
     }
 }

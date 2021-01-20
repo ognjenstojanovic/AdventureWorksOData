@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AdventureWorksOData.Database
 {
@@ -7,13 +10,14 @@ namespace AdventureWorksOData.Database
     {
         public PhoneNumberType()
         {
-            PersonPhone = new HashSet<PersonPhone>();
+            PersonPhones = new HashSet<PersonPhone>();
         }
 
+        [Key]
         public int PhoneNumberTypeId { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<PersonPhone> PersonPhone { get; set; }
+        public virtual ICollection<PersonPhone> PersonPhones { get; set; }
     }
 }

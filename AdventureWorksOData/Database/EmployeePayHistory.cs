@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class EmployeePayHistory
@@ -11,6 +13,6 @@ namespace AdventureWorksOData.Database
         public byte PayFrequency { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Employee BusinessEntity { get; set; }
+        public virtual Employee BusinessEntity { get; set; }
     }
 }

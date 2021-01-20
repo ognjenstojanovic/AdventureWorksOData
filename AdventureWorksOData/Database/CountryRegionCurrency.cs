@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AdventureWorksOData.Database
 {
     public partial class CountryRegionCurrency
     {
+        [Key]
         public string CountryRegionCode { get; set; }
         public string CurrencyCode { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public CountryRegion CountryRegionCodeNavigation { get; set; }
-        public Currency CurrencyCodeNavigation { get; set; }
+        public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
+        public virtual Currency CurrencyCodeNavigation { get; set; }
     }
 }

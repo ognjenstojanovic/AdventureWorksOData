@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class PurchaseOrderDetail
@@ -17,7 +19,7 @@ namespace AdventureWorksOData.Database
         public decimal StockedQty { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Product Product { get; set; }
-        public PurchaseOrderHeader PurchaseOrder { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual PurchaseOrderHeader PurchaseOrder { get; set; }
     }
 }

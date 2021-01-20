@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class SalesTaxRate
@@ -13,6 +15,6 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public StateProvince StateProvince { get; set; }
+        public virtual StateProvince StateProvince { get; set; }
     }
 }

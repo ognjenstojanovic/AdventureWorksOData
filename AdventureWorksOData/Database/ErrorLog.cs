@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ErrorLog
     {
         public int ErrorLogId { get; set; }
         public DateTime ErrorTime { get; set; }
+        public string UserName { get; set; }
         public int ErrorNumber { get; set; }
         public int? ErrorSeverity { get; set; }
         public int? ErrorState { get; set; }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class EmailAddress
@@ -11,6 +13,6 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Person BusinessEntity { get; set; }
+        public virtual Person BusinessEntity { get; set; }
     }
 }

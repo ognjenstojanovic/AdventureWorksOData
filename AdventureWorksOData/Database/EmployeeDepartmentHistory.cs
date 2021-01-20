@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class EmployeeDepartmentHistory
@@ -12,8 +14,8 @@ namespace AdventureWorksOData.Database
         public DateTime? EndDate { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Employee BusinessEntity { get; set; }
-        public Department Department { get; set; }
-        public Shift Shift { get; set; }
+        public virtual Employee BusinessEntity { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Shift Shift { get; set; }
     }
 }

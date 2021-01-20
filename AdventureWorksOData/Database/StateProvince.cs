@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AdventureWorksOData.Database
 {
@@ -7,10 +10,11 @@ namespace AdventureWorksOData.Database
     {
         public StateProvince()
         {
-            Address = new HashSet<Address>();
-            SalesTaxRate = new HashSet<SalesTaxRate>();
+            Addresses = new HashSet<Address>();
+            SalesTaxRates = new HashSet<SalesTaxRate>();
         }
 
+        [Key]
         public int StateProvinceId { get; set; }
         public string StateProvinceCode { get; set; }
         public string CountryRegionCode { get; set; }
@@ -20,9 +24,9 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public CountryRegion CountryRegionCodeNavigation { get; set; }
-        public SalesTerritory Territory { get; set; }
-        public ICollection<Address> Address { get; set; }
-        public ICollection<SalesTaxRate> SalesTaxRate { get; set; }
+        public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
+        public virtual SalesTerritory Territory { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<SalesTaxRate> SalesTaxRates { get; set; }
     }
 }

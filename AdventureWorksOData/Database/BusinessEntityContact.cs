@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class BusinessEntityContact
@@ -13,8 +15,8 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public BusinessEntity BusinessEntity { get; set; }
-        public ContactType ContactType { get; set; }
-        public Person Person { get; set; }
+        public virtual BusinessEntity BusinessEntity { get; set; }
+        public virtual ContactType ContactType { get; set; }
+        public virtual Person Person { get; set; }
     }
 }
