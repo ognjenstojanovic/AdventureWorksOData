@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class PurchaseOrderHeader
     {
         public PurchaseOrderHeader()
         {
-            PurchaseOrderDetail = new HashSet<PurchaseOrderDetail>();
+            PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
 
         public int PurchaseOrderId { get; set; }
@@ -24,9 +26,9 @@ namespace AdventureWorksOData.Database
         public decimal TotalDue { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Employee Employee { get; set; }
-        public ShipMethod ShipMethod { get; set; }
-        public Vendor Vendor { get; set; }
-        public ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual ShipMethod ShipMethod { get; set; }
+        public virtual Vendor Vendor { get; set; }
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
     }
 }

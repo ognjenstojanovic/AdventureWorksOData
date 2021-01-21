@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class SalesPersonQuotaHistory
@@ -11,6 +13,6 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public SalesPerson BusinessEntity { get; set; }
+        public virtual SalesPerson BusinessEntity { get; set; }
     }
 }

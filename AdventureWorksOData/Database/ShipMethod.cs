@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ShipMethod
     {
         public ShipMethod()
         {
-            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
         public int ShipMethodId { get; set; }
@@ -18,7 +20,7 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
-        public ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

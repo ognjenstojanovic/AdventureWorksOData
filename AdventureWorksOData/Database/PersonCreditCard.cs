@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class PersonCreditCard
@@ -9,7 +11,7 @@ namespace AdventureWorksOData.Database
         public int CreditCardId { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Person BusinessEntity { get; set; }
-        public CreditCard CreditCard { get; set; }
+        public virtual Person BusinessEntity { get; set; }
+        public virtual CreditCard CreditCard { get; set; }
     }
 }

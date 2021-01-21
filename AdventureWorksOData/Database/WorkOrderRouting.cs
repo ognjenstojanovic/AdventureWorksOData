@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class WorkOrderRouting
@@ -18,7 +20,7 @@ namespace AdventureWorksOData.Database
         public decimal? ActualCost { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Location Location { get; set; }
-        public WorkOrder WorkOrder { get; set; }
+        public virtual Location Location { get; set; }
+        public virtual WorkOrder WorkOrder { get; set; }
     }
 }

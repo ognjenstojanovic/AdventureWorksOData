@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ShoppingCartItem
@@ -12,6 +14,6 @@ namespace AdventureWorksOData.Database
         public DateTime DateCreated { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

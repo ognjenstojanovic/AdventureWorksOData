@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class Shift
     {
         public Shift()
         {
-            EmployeeDepartmentHistory = new HashSet<EmployeeDepartmentHistory>();
+            EmployeeDepartmentHistories = new HashSet<EmployeeDepartmentHistory>();
         }
 
         public byte ShiftId { get; set; }
@@ -16,6 +18,6 @@ namespace AdventureWorksOData.Database
         public TimeSpan EndTime { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistory { get; set; }
+        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
     }
 }

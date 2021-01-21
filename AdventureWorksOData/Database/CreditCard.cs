@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AdventureWorksOData.Database
 {
@@ -7,10 +10,11 @@ namespace AdventureWorksOData.Database
     {
         public CreditCard()
         {
-            PersonCreditCard = new HashSet<PersonCreditCard>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            PersonCreditCards = new HashSet<PersonCreditCard>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
+        [Key]
         public int CreditCardId { get; set; }
         public string CardType { get; set; }
         public string CardNumber { get; set; }
@@ -18,7 +22,7 @@ namespace AdventureWorksOData.Database
         public short ExpYear { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<PersonCreditCard> PersonCreditCard { get; set; }
-        public ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual ICollection<PersonCreditCard> PersonCreditCards { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

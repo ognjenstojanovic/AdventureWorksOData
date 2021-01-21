@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class Customer
     {
         public Customer()
         {
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
         public int CustomerId { get; set; }
@@ -18,9 +20,9 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Person Person { get; set; }
-        public Store Store { get; set; }
-        public SalesTerritory Territory { get; set; }
-        public ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual Person Person { get; set; }
+        public virtual Store Store { get; set; }
+        public virtual SalesTerritory Territory { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

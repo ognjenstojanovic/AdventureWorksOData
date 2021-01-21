@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ProductVendor
@@ -17,8 +19,8 @@ namespace AdventureWorksOData.Database
         public string UnitMeasureCode { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Vendor BusinessEntity { get; set; }
-        public Product Product { get; set; }
-        public UnitMeasure UnitMeasureCodeNavigation { get; set; }
+        public virtual Vendor BusinessEntity { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual UnitMeasure UnitMeasureCodeNavigation { get; set; }
     }
 }

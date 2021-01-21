@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class Product
     {
         public Product()
         {
-            BillOfMaterialsComponent = new HashSet<BillOfMaterials>();
-            BillOfMaterialsProductAssembly = new HashSet<BillOfMaterials>();
-            ProductCostHistory = new HashSet<ProductCostHistory>();
-            ProductInventory = new HashSet<ProductInventory>();
-            ProductListPriceHistory = new HashSet<ProductListPriceHistory>();
-            ProductProductPhoto = new HashSet<ProductProductPhoto>();
-            ProductReview = new HashSet<ProductReview>();
-            ProductVendor = new HashSet<ProductVendor>();
-            PurchaseOrderDetail = new HashSet<PurchaseOrderDetail>();
-            ShoppingCartItem = new HashSet<ShoppingCartItem>();
-            SpecialOfferProduct = new HashSet<SpecialOfferProduct>();
-            TransactionHistory = new HashSet<TransactionHistory>();
-            WorkOrder = new HashSet<WorkOrder>();
+            BillOfMaterialComponents = new HashSet<BillOfMaterial>();
+            BillOfMaterialProductAssemblies = new HashSet<BillOfMaterial>();
+            ProductCostHistories = new HashSet<ProductCostHistory>();
+            ProductInventories = new HashSet<ProductInventory>();
+            ProductListPriceHistories = new HashSet<ProductListPriceHistory>();
+            ProductProductPhotos = new HashSet<ProductProductPhoto>();
+            ProductReviews = new HashSet<ProductReview>();
+            ProductVendors = new HashSet<ProductVendor>();
+            PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+            ShoppingCartItems = new HashSet<ShoppingCartItem>();
+            SpecialOfferProducts = new HashSet<SpecialOfferProduct>();
+            TransactionHistories = new HashSet<TransactionHistory>();
+            WorkOrders = new HashSet<WorkOrder>();
         }
 
         public int ProductId { get; set; }
@@ -48,22 +50,22 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ProductModel ProductModel { get; set; }
-        public ProductSubcategory ProductSubcategory { get; set; }
-        public UnitMeasure SizeUnitMeasureCodeNavigation { get; set; }
-        public UnitMeasure WeightUnitMeasureCodeNavigation { get; set; }
-        public ICollection<BillOfMaterials> BillOfMaterialsComponent { get; set; }
-        public ICollection<BillOfMaterials> BillOfMaterialsProductAssembly { get; set; }
-        public ICollection<ProductCostHistory> ProductCostHistory { get; set; }
-        public ICollection<ProductInventory> ProductInventory { get; set; }
-        public ICollection<ProductListPriceHistory> ProductListPriceHistory { get; set; }
-        public ICollection<ProductProductPhoto> ProductProductPhoto { get; set; }
-        public ICollection<ProductReview> ProductReview { get; set; }
-        public ICollection<ProductVendor> ProductVendor { get; set; }
-        public ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
-        public ICollection<ShoppingCartItem> ShoppingCartItem { get; set; }
-        public ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; }
-        public ICollection<TransactionHistory> TransactionHistory { get; set; }
-        public ICollection<WorkOrder> WorkOrder { get; set; }
+        public virtual ProductModel ProductModel { get; set; }
+        public virtual ProductSubcategory ProductSubcategory { get; set; }
+        public virtual UnitMeasure SizeUnitMeasureCodeNavigation { get; set; }
+        public virtual UnitMeasure WeightUnitMeasureCodeNavigation { get; set; }
+        public virtual ICollection<BillOfMaterial> BillOfMaterialComponents { get; set; }
+        public virtual ICollection<BillOfMaterial> BillOfMaterialProductAssemblies { get; set; }
+        public virtual ICollection<ProductCostHistory> ProductCostHistories { get; set; }
+        public virtual ICollection<ProductInventory> ProductInventories { get; set; }
+        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistories { get; set; }
+        public virtual ICollection<ProductProductPhoto> ProductProductPhotos { get; set; }
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
+        public virtual ICollection<ProductVendor> ProductVendors { get; set; }
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+        public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public virtual ICollection<SpecialOfferProduct> SpecialOfferProducts { get; set; }
+        public virtual ICollection<TransactionHistory> TransactionHistories { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

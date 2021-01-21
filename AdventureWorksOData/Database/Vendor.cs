@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class Vendor
     {
         public Vendor()
         {
-            ProductVendor = new HashSet<ProductVendor>();
-            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
+            ProductVendors = new HashSet<ProductVendor>();
+            PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
         }
 
         public int BusinessEntityId { get; set; }
@@ -20,8 +22,8 @@ namespace AdventureWorksOData.Database
         public string PurchasingWebServiceUrl { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public BusinessEntity BusinessEntity { get; set; }
-        public ICollection<ProductVendor> ProductVendor { get; set; }
-        public ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
+        public virtual BusinessEntity BusinessEntity { get; set; }
+        public virtual ICollection<ProductVendor> ProductVendors { get; set; }
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
     }
 }

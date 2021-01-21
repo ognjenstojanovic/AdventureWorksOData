@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ProductModelIllustration
@@ -9,7 +11,7 @@ namespace AdventureWorksOData.Database
         public int IllustrationId { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Illustration Illustration { get; set; }
-        public ProductModel ProductModel { get; set; }
+        public virtual Illustration Illustration { get; set; }
+        public virtual ProductModel ProductModel { get; set; }
     }
 }

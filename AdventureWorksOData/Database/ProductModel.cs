@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ProductModel
     {
         public ProductModel()
         {
-            Product = new HashSet<Product>();
-            ProductModelIllustration = new HashSet<ProductModelIllustration>();
-            ProductModelProductDescriptionCulture = new HashSet<ProductModelProductDescriptionCulture>();
+            ProductModelIllustrations = new HashSet<ProductModelIllustration>();
+            ProductModelProductDescriptionCultures = new HashSet<ProductModelProductDescriptionCulture>();
+            Products = new HashSet<Product>();
         }
 
         public int ProductModelId { get; set; }
@@ -19,8 +21,8 @@ namespace AdventureWorksOData.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<Product> Product { get; set; }
-        public ICollection<ProductModelIllustration> ProductModelIllustration { get; set; }
-        public ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture { get; set; }
+        public virtual ICollection<ProductModelIllustration> ProductModelIllustrations { get; set; }
+        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

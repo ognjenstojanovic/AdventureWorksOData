@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AdventureWorksOData.Database
 {
@@ -7,13 +10,14 @@ namespace AdventureWorksOData.Database
     {
         public Culture()
         {
-            ProductModelProductDescriptionCulture = new HashSet<ProductModelProductDescriptionCulture>();
+            ProductModelProductDescriptionCultures = new HashSet<ProductModelProductDescriptionCulture>();
         }
 
+        [Key]
         public string CultureId { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture { get; set; }
+        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get; set; }
     }
 }

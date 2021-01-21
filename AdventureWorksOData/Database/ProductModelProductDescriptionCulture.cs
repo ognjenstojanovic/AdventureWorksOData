@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AdventureWorksOData.Database
 {
     public partial class ProductModelProductDescriptionCulture
@@ -10,8 +12,8 @@ namespace AdventureWorksOData.Database
         public string CultureId { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public Culture Culture { get; set; }
-        public ProductDescription ProductDescription { get; set; }
-        public ProductModel ProductModel { get; set; }
+        public virtual Culture Culture { get; set; }
+        public virtual ProductDescription ProductDescription { get; set; }
+        public virtual ProductModel ProductModel { get; set; }
     }
 }
